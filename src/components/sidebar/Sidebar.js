@@ -146,7 +146,7 @@ function Sidebar() {
                 <circle cx="7" cy="15" r="1.5" />
                 <circle cx="17" cy="15" r="1.5" />
               </svg>
-              <div className="title-menu">College</div>
+              <div className="title-menu">Colleges</div>
             </li>
             <li className="li-mneu">
               <svg

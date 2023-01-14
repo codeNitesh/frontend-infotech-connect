@@ -1,0 +1,48 @@
+.colleges{
+    padding: 1rem;
+    color: #fff;
+}
+.colleges__grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 250px;
+    grid-gap: 1rem;
+    margin: 1rem 0;
+}
+
+.colleges__grid__item{
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.colleges__grid__item:hover{
+    border: 3px solid white;
+}
+.colleges__grid__item img{
+    width: 100%;
+    height: 150px;
+    object-fit: fill;
+    border-radius: 5px;
+}
+.colleges__grid__item p{
+    margin: 0;
+    padding: 6px 0;
+    font-size: 1rem;
+}
+
+.colleges__grid__item p{
+    margin: 0;
+    font-weight: 500;
+    text-align: center;
+}
+.colleges__grid__item a{
+    color: #000;
+    text-decoration: none;
+}
+
+.colleges__grid__item a:hover{
+    text-decoration: underline;
+}
