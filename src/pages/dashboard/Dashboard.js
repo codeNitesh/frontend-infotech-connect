@@ -1,6 +1,8 @@
 import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./Dashboard.css";
+import { Outlet, Link } from "react-router-dom";
+
 
 function Dashboard() {
   return (
@@ -8,7 +10,9 @@ function Dashboard() {
       <div className="box-college">
         <div className="heading-bar">
           <p className="heading">Colleges</p>
-          <p className="heading-view-more">View all {">>"}</p>
+          <p className="heading-view-more">
+            <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/colleges">View all {">>"}</Link>
+          </p>
         </div>
 
         <div className="card-content">
@@ -69,7 +73,9 @@ function Dashboard() {
       <div className="box-coding">
         <div className="heading-bar">
           <p className="heading">Competitive Coding</p>
-          <p className="heading-view-more">View all {">>"}</p>
+          <p className="heading-view-more">
+            <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/my-events">View all {">>"}</Link>
+          </p>
         </div>
         <div className="card-content">
           <div class="grid-item">

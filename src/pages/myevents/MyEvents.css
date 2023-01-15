@@ -1,0 +1,51 @@
+.myevents__grid__item{
+    border-radius: 5px;
+    padding: 1rem;
+    color: white;    
+}
+
+.myevents__grid__item__events{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 270px;
+    grid-gap: 1rem;
+    margin: 1rem 0;
+    
+}
+
+.myevents__grid__item__events .myevents__grid__item__events__item{
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.myevents__grid__item__events .myevents__grid__item__events__item:hover{
+    border: 3px solid white;
+}
+
+.myevents__grid__item__events__item img{
+    width: 100%;
+    height: 130px;
+    object-fit: fill;
+    border-radius: 5px;
+}
+
+.myevents__grid__item__events__item p{
+    text-align: center;
+}
+
+.myevents__grid__item__events__item .myevents__grid__item__events__item___heading{
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.myevents__grid__item__events__item .myevents__grid__item__events__item___subtitle{
+    font-size: .9rem;
+    margin: 3px 0;
+}
+
+.myevents__grid__item__events__item .myevents__grid__item__events__item___subsubtitle{
+    font-size: .8rem;
+}

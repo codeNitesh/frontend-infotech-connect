@@ -15,7 +15,7 @@ body {
     animation-name: InfoUser;
 }
 
-p{
+p {
     padding: 0px;
     margin: 0;
 }
@@ -27,9 +27,9 @@ p{
     animation-duration: 2s;
 }
 
-.main-box{
+.main-box {
     display: grid;
-    
+
     grid-template-columns: 69% 29%;
     grid-template-rows: 50% 50%;
     grid-gap: 10px;
@@ -38,24 +38,25 @@ p{
     height: calc(100vh - 180px);
 }
 
-.box-college, .box-current-events, .box-coding, .box-upcoming-events{
-    background-color: whitesmoke;
+.box-college,
+.box-current-events,
+.box-coding,
+.box-upcoming-events {
     border-radius: 19px;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 0px 10px 0px;
     margin-top: 15px;
     animation-name: Activities;
     padding: 3px 15px;
-    /* height: 100%; */
+    border: 1px solid gray;
 }
 
 
-.box-college .heading, .box-coding .heading{
+.heading-bar .heading {
     font-size: 1rem;
     font-weight: 500;
 }
 
-.card-content{
-    /* padding: 20px; */
+.card-content {
     display: grid;
     height: 80%;
     width: 100%;
@@ -67,14 +68,18 @@ p{
     grid-gap: 10px;
 }
 
-.box-current-events .card-content, .box-upcoming-events .card-content{
+
+.box-current-events .card-content,
+.box-upcoming-events .card-content {
     display: flex;
     flex-direction: column;
     height: 80%;
     width: 100%;
 }
 
-.box-current-events .card-content .grid-item, .box-upcoming-events .card-content .grid-item{
+.box-current-events .card-content .grid-item,
+.box-upcoming-events .card-content .grid-item {
+
     padding: 5px 10px;
     display: flex;
     flex-direction: row;
@@ -85,23 +90,28 @@ p{
     border-radius: 19px;
     cursor: pointer;
 }
-.box-current-events .card-content .grid-item img, .box-upcoming-events .card-content .grid-item img{
+
+.box-current-events .card-content .grid-item img,
+.box-upcoming-events .card-content .grid-item img {
     width: 30%;
 }
 
-.box-current-events .card-content .grid-item .grid-info .grid-info-title, .box-upcoming-events .card-content .grid-item .grid-info .grid-info-title{
+.box-current-events .card-content .grid-item .grid-info .grid-info-title,
+.box-upcoming-events .card-content .grid-item .grid-info .grid-info-title {
     font-weight: bold;
     text-align: start;
     padding-top: 0px;
     font-size: .9rem;
 }
-.box-current-events .card-content .grid-item .grid-info .grid-info-subtitle, .box-upcoming-events .card-content .grid-item .grid-info .grid-info-subtitle{
+
+.box-current-events .card-content .grid-item .grid-info .grid-info-subtitle,
+.box-upcoming-events .card-content .grid-item .grid-info .grid-info-subtitle {
     font-size: .8rem;
     text-align: start;
     color: gray;
 }
 
-.box-upcoming-events .card-content .grid-item{
+.box-upcoming-events .card-content .grid-item {
     padding: 5px 10px;
     display: flex;
     flex-direction: row;
@@ -114,37 +124,43 @@ p{
     cursor: pointer;
 }
 
-.box-upcoming-events .card-content .grid-item .grid-info-subtitle-subtitle{
+.box-upcoming-events .card-content .grid-item .grid-info-subtitle-subtitle {
     font-size: .7rem;
     text-align: start;
     color: gray;
 }
 
 
-.card-content .grid-item img{
+.card-content .grid-item img {
     width: 50%;
 }
-.card-content .grid-item p{
+
+.card-content .grid-item p {
     font-size: .8rem;
     text-align: center;
     padding-top: 6px;
 }
 
-.heading-bar{
+.heading-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 12px 0;
+    color: white;
 }
 
-.heading-bar .heading-view-more{
+.heading-bar .heading-view-more {
     font-size: .8rem;
     font-weight: 500;
-    color: blue;
+    color: white;
     cursor: pointer;
 }
 
-.card-content .grid-item{
+.heading-bar .heading-view-more:hover {
+    color: orange;
+}
+
+.card-content .grid-item {
     padding: 10px 30px;
 
     display: flex;
@@ -155,13 +171,13 @@ p{
     border-right: 1px solid black;
     border-radius: 19px;
     cursor: pointer;
+    background-color: hsl(0, 0%, 97%);
 }
 
-
-
-
-
-
+.card-content .grid-item:hover {
+    background-color: hsl(0, 0%, 99%);
+    transform: scale(1.02);
+}
 
 .stocks-status {
     position: absolute;
