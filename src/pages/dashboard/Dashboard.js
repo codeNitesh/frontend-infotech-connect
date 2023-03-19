@@ -16,19 +16,19 @@ function Dashboard() {
         </div>
 
         <div className="card-content">
-          <div class="grid-item">
+          <div className="grid-item">
             <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
             <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
           </div>
-          <div class="grid-item">
+          <div className="grid-item">
             <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
             <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
           </div>
-          <div class="grid-item">
+          <div className="grid-item">
             <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
             <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
           </div>
-          <div class="grid-item">
+          <div className="grid-item">
             <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
             <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
           </div>
@@ -40,28 +40,28 @@ function Dashboard() {
           <p className="heading-view-more">{">>"}</p>
         </div>
         <div className="card-content">
-          <div class="grid-item">
+          <div className="grid-item">
             <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
             <div className="grid-info">
               <p className="grid-info-title">Meta Cube Drive</p>
               <p className="grid-info-subtitle">Software Developer</p>
             </div>
           </div>
-          <div class="grid-item">
+          <div className="grid-item">
             <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
             <div className="grid-info">
               <p className="grid-info-title">Meta Cube Drive</p>
               <p className="grid-info-subtitle">Software Developer</p>
             </div>
           </div>
-          <div class="grid-item">
+          <div className="grid-item">
             <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
             <div className="grid-info">
               <p className="grid-info-title">Meta Cube Drive</p>
               <p className="grid-info-subtitle">Software Developer</p>
             </div>
           </div>
-          <div class="grid-item">
+          <div className="grid-item">
             <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
             <div className="grid-info">
               <p className="grid-info-title">Meta Cube Drive</p>
@@ -78,19 +78,19 @@ function Dashboard() {
           </p>
         </div>
         <div className="card-content">
-          <div class="grid-item">
+          <div className="grid-item">
             <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
             <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
           </div>
-          <div class="grid-item">
+          <div className="grid-item">
             <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
             <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
           </div>
-          <div class="grid-item">
+          <div className="grid-item">
             <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
             <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
           </div>
-          <div class="grid-item">
+          <div className="grid-item">
             <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
             <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
           </div>
@@ -102,7 +102,7 @@ function Dashboard() {
           <p className="heading-view-more">{">>"}</p>
         </div>
         <div className="card-content">
-          <div class="grid-item">
+          <div className="grid-item">
             <div className="grid-info">
               <p className="grid-info-title">How to improve coding skills</p>
               <p className="grid-info-subtitle">By Mr. Shashi Kant Raza</p>
@@ -111,7 +111,7 @@ function Dashboard() {
               </p>
             </div>
           </div>
-          <div class="grid-item">
+          <div className="grid-item">
             <div className="grid-info">
               <p className="grid-info-title">How to improve coding skills</p>
               <p className="grid-info-subtitle">By Mr. Shashi Kant Raza</p>
@@ -120,7 +120,7 @@ function Dashboard() {
               </p>
             </div>
           </div>
-          <div class="grid-item">
+          <div className="grid-item">
             <div className="grid-info">
               <p className="grid-info-title">How to improve coding skills</p>
               <p className="grid-info-subtitle">By Mr. Shashi Kant Raza</p>

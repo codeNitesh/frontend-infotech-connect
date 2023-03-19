@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from './components/layout/Layout';
 import Colleges from './pages/colleges/Colleges';
 import MyEvents from './pages/myevents/MyEvents';
+import Explore from './pages/explore/Explore';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="colleges" element={<Colleges />} />
           <Route path="my-events" element={<MyEvents />} />
+          <Route path="explore" element={<Explore />} />
           {/*  <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>

@@ -17,11 +17,11 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 1rem;
     border: 1px solid gray;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .myevents__grid__item__events .myevents__grid__item__events__item:hover{
-    border: 3px solid white;
+    border: 1px solid white;
 }
 
 .myevents__grid__item__events__item img{
@@ -48,4 +48,17 @@
 
 .myevents__grid__item__events__item .myevents__grid__item__events__item___subsubtitle{
     font-size: .8rem;
+}
+
+button{
+    margin: 10px 0 0 0;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: white;
+}
+
+button:hover{
+    background-color: rgb(233, 233, 233);
 }

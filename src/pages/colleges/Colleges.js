@@ -1,52 +1,45 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./Colleges.css";
 
 function Colleges() {
+  const [colleges, setColleges] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/colleges/")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setColleges(result.results);
+          console.log(result)
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
+
   return (
     <div className="colleges">
       <h1>Colleges</h1>
 
       <div className="colleges__grid">
-        <div className="colleges__grid__item">
-          <img src="https://clgonline.in//static/all_collages/img/modern-institute-of-technology-and-research-centre-mitrc-alwar.jpg" />
-          <p>Modern Institute of Technology and Research Centr, Alwar</p>
-        </div>
-        <div className="colleges__grid__item">
-          <img src="https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=" />
-          <p>College 2</p>
-        </div>
-        <div className="colleges__grid__item">
-          <img src="https://www.bhaktiphotos.com/wp-content/uploads/2018/04/Mahadev-Bhagwan-Photo-for-Devotee.jpg" />
-          <p>College 2</p>
-        </div>
-        <div className="colleges__grid__item">
-          <img src="https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=" />
-          <p>College 2</p>
-        </div>
-        <div className="colleges__grid__item">
-          <img src="https://www.singheducation.co.in/images/CollegeImages/257632mit.jpg" />
-          <p>College 2</p>
-        </div>
-        <div className="colleges__grid__item">
-          <img src="https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=" />
-          <p>College 2</p>
-        </div>
-        <div className="colleges__grid__item">
-          <img src="https://www.bhaktiphotos.com/wp-content/uploads/2018/04/Mahadev-Bhagwan-Photo-for-Devotee.jpg" />
-          <p>College 2</p>
-        </div>
-        <div className="colleges__grid__item">
-          <img src="https://clgonline.in//static/all_collages/img/modern-institute-of-technology-and-research-centre-mitrc-alwar.jpg" />
-          <p>College 1</p>
-        </div>
-        <div className="colleges__grid__item">
-          <img src="https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=" />
-          <p>College 2</p>
-        </div>
-        <div className="colleges__grid__item">
-          <img src="https://www.bhaktiphotos.com/wp-content/uploads/2018/04/Mahadev-Bhagwan-Photo-for-Devotee.jpg" />
-          <p>College 2</p>
-        </div>
+        {colleges.map((college, i) => (
+          <div key={i} className="colleges__grid__item">
+            <img src={college.img} />
+            <p>{college.name}</p>
+            <p>
+              <span>{college.address}</span>
+            </p>
+          
+          </div>
+        ))}
       </div>
     </div>
   );
