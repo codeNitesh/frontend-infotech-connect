@@ -11,18 +11,24 @@ import Colleges from './pages/colleges/Colleges';
 import MyEvents from './pages/myevents/MyEvents';
 import Explore from './pages/explore/Explore';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
+  const notify = (message) => toast(message);
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Dashboard />} />
+          <Route index element={<Dashboard notify={notify} />} />
           <Route path="colleges" element={<Colleges />} />
-          <Route path="my-events" element={<MyEvents />} />
-          <Route path="explore" element={<Explore />} />
+          <Route path="my-events" element={<MyEvents notify={notify} />} />
+          <Route path="explore" element={<Explore notify={notify} />} />
           {/*  <Route path="*" element={<NoPage />} /> */}
         </Route>
       </Routes>
+      <ToastContainer />
     </BrowserRouter>
   );
 }

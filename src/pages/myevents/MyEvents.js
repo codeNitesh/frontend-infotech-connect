@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "./MyEvents.css";
 
-function MyEvents() {
+function MyEvents({notify}) {
   const [currentEvents, setCurrentEvents] = useState([]);
   const [pastEvents, setPastEvents] = useState([]);
 
@@ -81,6 +81,7 @@ function MyEvents() {
       .then((res) => res.json())
       .then(
         (result) => {
+          notify("You have successfully withdrawn your registration for the event!");
           getEventDetails()
         },
         (error) => {
@@ -97,6 +98,7 @@ function MyEvents() {
         <div className="myevents__grid__item">
           <h2>Current Registered Events</h2>
           <div className="myevents__grid__item__events">
+            {currentEvents.length === 0 ? <p className="no-data-error">No Data Available</p> : null}
             {currentEvents && currentEvents.map((registeredEvent, i) => (
               <div key={i} className="myevents__grid__item__events__item">
                 <img  
@@ -123,6 +125,7 @@ function MyEvents() {
         <div className="myevents__grid__item">
           <h2>Past Registered Events</h2>
           <div className="myevents__grid__item__events">
+          {pastEvents.length === 0 ? <p className="no-data-error">No Data Available</p> : null}
             {pastEvents && pastEvents.map((registeredEvent, i) => (
               <div key={i} className="myevents__grid__item__events__item">
                 <img  

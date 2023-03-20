@@ -12,7 +12,7 @@ function Colleges() {
       .then(
         (result) => {
           setIsLoaded(true);
-          setColleges(result.results);
+          setColleges(result);
           console.log(result)
         },
         // Note: it's important to handle errors here

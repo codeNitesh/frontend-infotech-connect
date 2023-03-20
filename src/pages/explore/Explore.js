@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Explore.css";
 
-function Explore() {
+function Explore({notify}) {
   const [currentEvents, setCurrentEvents] = useState([]);
   const [pastEvents, setPastEvents] = useState([]);
 
@@ -49,7 +49,12 @@ function Explore() {
           setIsLoaded(true);
           setCurrentEvents(result.currentEvents);
           setPastEvents(result.pastEvents);
-          console.log(result);
+
+          if(result?.error === 'Already registered'){
+            notify('You have already registered for this event')
+          }else{
+            notify('Registered Successfully')
+          }
           getEventDetails();
         },
         (error) => {

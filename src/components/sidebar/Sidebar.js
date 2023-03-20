@@ -1,14 +1,28 @@
 import React from "react";
 import "./Sidebar.css";
+import { Outlet, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function Sidebar() {
+
+  //assigning location variable
+  const location = useLocation();
+
+  //destructuring pathname from location
+  const { pathname } = location;
+
+  //Javascript split method to get the name of the path in array
+  const splitLocation = pathname.split("/");
+
+
   return (
     <>
       <div className="Side-bar">
-        <div className="Box-logo">InfoTech</div>
+        <div className="Box-logo">INFOTECH</div>
         <div className="Box-menu">
           <ul className="ul-menu">
-            <li className="li-mneu Active-menu">
+          <Link to="">
+            <li className={splitLocation[1] === "" ? "li-mneu Active-menu" : "li-mneu"}>
               <svg
                 className="icon-menu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -52,9 +66,11 @@ function Sidebar() {
                 <path d="M7,13H4a4,4,0,0,0-4,4v3a4,4,0,0,0,4,4H7a4,4,0,0,0,4-4V17A4,4,0,0,0,7,13Zm2,7a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V17a2,2,0,0,1,2-2H7a2,2,0,0,1,2,2Z" />
                 <path d="M20,13H17a4,4,0,0,0-4,4v3a4,4,0,0,0,4,4h3a4,4,0,0,0,4-4V17A4,4,0,0,0,20,13Zm2,7a2,2,0,0,1-2,2H17a2,2,0,0,1-2-2V17a2,2,0,0,1,2-2h3a2,2,0,0,1,2,2Z" />
               </svg>
-              <div className="title-menu">Home</div>
+              <div className="title-menu">Home</div>              
             </li>
-            <li className="li-mneu">
+            </Link>
+            <Link to="explore">
+            <li className={splitLocation[1] === "explore" ? "li-mneu Active-menu" : "li-mneu"}>
               <svg
                 className="icon-menu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +118,9 @@ function Sidebar() {
               </svg>
               <div className="title-menu">Explore</div>
             </li>
-            <li className="li-mneu">
+            </Link>
+            <Link to="colleges">
+            <li className={splitLocation[1] === "colleges" ? "li-mneu Active-menu" : "li-mneu"}>
               <svg
                 className="icon-menu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +166,9 @@ function Sidebar() {
               </svg>
               <div className="title-menu">Colleges</div>
             </li>
-            <li className="li-mneu">
+            </Link>
+            <Link to="my-events">
+            <li className={splitLocation[1] === "my-events" ? "li-mneu Active-menu" : "li-mneu"}>
               <svg
                 className="icon-menu"
                 xmlns="http://www.w3.org/2000/svg"
@@ -191,7 +211,8 @@ function Sidebar() {
               </svg>
               <div className="title-menu">My Events</div>
             </li>
-            <li className="li-mneu">
+            </Link>
+            <li className={splitLocation[1] === "login" ? "li-mneu Active-menu" : "li-mneu"}>
               <svg
                 className="icon-menu"
                 xmlns="http://www.w3.org/2000/svg"
