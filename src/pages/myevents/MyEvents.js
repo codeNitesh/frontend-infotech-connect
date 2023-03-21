@@ -15,7 +15,7 @@ function MyEvents({notify}) {
 
   const getEventDetails = () =>{
     const user_id = 1;
-    fetch("http://localhost:8000/my-events/"+user_id+"/")
+    fetch("https://finalyear-project-production.up.railway.app/my-events/"+user_id+"/")
       .then(res => res.json())
       .then(
         (result) => {
@@ -41,7 +41,7 @@ function MyEvents({notify}) {
   //       event : id,
   //       status: 'Active'
   //   }
-  //   fetch("http://localhost:8000/register-student-for-event/", {
+  //   fetch("https://finalyear-project-production.up.railway.app/register-student-for-event/", {
   //     method: 'POST',
   //     body: JSON.stringify(payload),
   //     headers: {
@@ -71,7 +71,7 @@ function MyEvents({notify}) {
         event : id,
         status: 'Active'
     }
-    fetch("http://localhost:8000/unregister-student-for-event/"+id+"/", {
+    fetch("https://finalyear-project-production.up.railway.app/unregister-student-for-event/"+id+"/", {
       method: 'DELETE',
       body: JSON.stringify(payload),
       headers: {

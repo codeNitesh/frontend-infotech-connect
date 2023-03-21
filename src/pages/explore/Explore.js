@@ -14,7 +14,7 @@ function Explore({notify}) {
 
   
   const getEventDetails = ()=>{
-    fetch("http://localhost:8000/all-events/")
+    fetch("https://finalyear-project-production.up.railway.app/all-events/")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -36,7 +36,7 @@ function Explore({notify}) {
         event : id,
         status: 'Active'
     }
-    fetch("http://localhost:8000/register-student-for-event/", {
+    fetch("https://finalyear-project-production.up.railway.app/register-student-for-event/", {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {

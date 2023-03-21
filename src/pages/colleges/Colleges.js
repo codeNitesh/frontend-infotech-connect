@@ -7,7 +7,7 @@ function Colleges() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:8000/colleges/")
+    fetch("https://finalyear-project-production.up.railway.app/colleges/")
       .then(res => res.json())
       .then(
         (result) => {
