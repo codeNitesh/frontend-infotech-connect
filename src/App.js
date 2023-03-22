@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Login from './pages/login/Login';
+import Register from './pages/register/Register';
 import Dashboard from './pages/dashboard/Dashboard';
 import Sidebar from './components/sidebar/Sidebar';
 
@@ -16,17 +17,21 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const notify = (message) => toast(message);
-
+  const BASEURL = "http://localhost:8000"
+  
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Dashboard notify={notify} />} />
-          <Route path="colleges" element={<Colleges />} />
-          <Route path="my-events" element={<MyEvents notify={notify} />} />
-          <Route path="explore" element={<Explore notify={notify} />} />
-          {/*  <Route path="*" element={<NoPage />} /> */}
+        <Route path="login" element={<Login notify={notify} BASEURL={BASEURL}/>} />
+        <Route path="register" element={<Register BASEURL={BASEURL} />} />
+
+        <Route path="/app" element={<Layout />}>
+          <Route index element={<Dashboard notify={notify} BASEURL={BASEURL} />} />
+          <Route path="colleges" element={<Colleges BASEURL={BASEURL} />} />
+          <Route path="my-events" element={<MyEvents notify={notify} BASEURL={BASEURL} />} />
+          <Route path="explore" element={<Explore notify={notify} BASEURL={BASEURL} />} />
         </Route>
+        
       </Routes>
       <ToastContainer />
     </BrowserRouter>

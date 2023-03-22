@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./Explore.css";
+import { useNavigate } from "react-router-dom";
 
-function Explore({notify}) {
+
+function Explore({notify, BASEURL}) {
   const [currentEvents, setCurrentEvents] = useState([]);
   const [pastEvents, setPastEvents] = useState([]);
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  let navigate = useNavigate(); 
 
   useEffect(() => {
     getEventDetails();
@@ -14,7 +17,7 @@ function Explore({notify}) {
 
   
   const getEventDetails = ()=>{
-    fetch("https://finalyear-project-production.up.railway.app/all-events/")
+    fetch(BASEURL+"/all-events/")
       .then((res) => res.json())
       .then(
         (result) => {
@@ -30,36 +33,44 @@ function Explore({notify}) {
       );
   }
   const onRegisterClick = (id) =>{
-    const user_id = 1;
+    const token = localStorage.getItem("INFOTECT_TOKEN")
     const payload = {
-        student: user_id,
         event : id,
         status: 'Active'
     }
-    fetch("https://finalyear-project-production.up.railway.app/register-student-for-event/", {
+    fetch(BASEURL+"/register-student-for-event/", {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: {
-        'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+        'Content-type': 'application/json; charset=UTF-8',
+        'Authorization': `Token ${token}` 
       },
     })
       .then((res) => res.json())
       .then(
         (result) => {
+          if(result?.error === 'Already registered'){
+            notify('You have already registered for this event')
+          }else if(result.error){
+            notify(result.error)
+            navigate("/login");
+            localStorage.clear()
+            return;
+          }else{
+            notify('Registered Successfully')
+          }
+
           setIsLoaded(true);
           setCurrentEvents(result.currentEvents);
           setPastEvents(result.pastEvents);
 
-          if(result?.error === 'Already registered'){
-            notify('You have already registered for this event')
-          }else{
-            notify('Registered Successfully')
-          }
+          
           getEventDetails();
         },
         (error) => {
           setIsLoaded(true);
           setError(error);
+          notify('Error')
         }
       );
   }

@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import "./Colleges.css";
 
-function Colleges() {
+function Colleges({BASEURL}) {
   const [colleges, setColleges] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch("https://finalyear-project-production.up.railway.app/colleges/")
+    fetch(BASEURL+"/colleges/")
       .then(res => res.json())
       .then(
         (result) => {

@@ -2,8 +2,26 @@ import React from "react";
 import Sidebar from "../sidebar/Sidebar";
 import "./Layout.css";
 import { Outlet, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Layout() {
+
+  React.useEffect(()=>{
+    validateToken()
+  }, [])
+
+  let navigate = useNavigate(); 
+
+  const validateToken = () =>{
+    const token = localStorage.getItem("INFOTECT_TOKEN")
+    if(token){
+    }else{
+      localStorage.clear()
+      navigate("/login");
+    }
+  }
+
+
   return (
     <div className="dashboard">
       <Sidebar />
