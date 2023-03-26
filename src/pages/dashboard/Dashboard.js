@@ -1,37 +1,62 @@
-import React from "react";
-import Sidebar from "../../components/sidebar/Sidebar";
+import React, {useEffect, useState} from "react";
 import "./Dashboard.css";
 import { Outlet, Link } from "react-router-dom";
 
+function Dashboard({BASEURL}) {
 
-function Dashboard() {
+  const [colleges, setColleges] = useState([]);
+  const [competitive_events, setCompetitiveEvents] = useState([]);
+  const [current_events, setCurrentEvents] = useState([]);
+  const [upcoming_events, setUpcomingEvents] = useState([]);
+
+  useEffect(() => {
+    getDashboardDate();
+  }, []);
+
+  const getDashboardDate = () => {
+    const token = localStorage.getItem("INFOTECT_TOKEN");
+
+    fetch(BASEURL+"/dashboard-data/", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        Authorization: `Token ${token}`,
+      }
+    })
+    .then((res) => res.json())
+    .then(
+      (result) => {
+        setColleges(result.colleges);
+        setCompetitiveEvents(result.competitive_events);
+        setCurrentEvents(result.current_events);
+        setUpcomingEvents(result.upcoming_events);
+        console.log(result);
+      },
+      (error) => {
+        // setIsLoaded(true);
+        // setError(error);
+        console.log(error);
+      }
+    );
+  
+  }
   return (
     <div className="main-box">
       <div className="box-college">
         <div className="heading-bar">
           <p className="heading">Colleges</p>
           <p className="heading-view-more">
-            <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/colleges">View all {">>"}</Link>
+            <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="colleges">View all {">>"}</Link>
           </p>
         </div>
 
         <div className="card-content">
-          <div className="grid-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
-            <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
-          </div>
-          <div className="grid-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
-            <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
-          </div>
-          <div className="grid-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
-            <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
-          </div>
-          <div className="grid-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
-            <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
-          </div>
+          {colleges.map((college, index) => (
+            <div key={index} className="grid-item">
+              <img src={college.img} />
+              <p><span style={{fontWeight: 700}}>{college.name}</span> - {college.address}</p>
+            </div>
+          ))}
         </div>
       </div>
       <div className="box-current-events">
@@ -40,95 +65,53 @@ function Dashboard() {
           <p className="heading-view-more">{">>"}</p>
         </div>
         <div className="card-content">
-          <div className="grid-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
-            <div className="grid-info">
-              <p className="grid-info-title">Meta Cube Drive</p>
-              <p className="grid-info-subtitle">Software Developer</p>
-            </div>
-          </div>
-          <div className="grid-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
-            <div className="grid-info">
-              <p className="grid-info-title">Meta Cube Drive</p>
-              <p className="grid-info-subtitle">Software Developer</p>
-            </div>
-          </div>
-          <div className="grid-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
-            <div className="grid-info">
-              <p className="grid-info-title">Meta Cube Drive</p>
-              <p className="grid-info-subtitle">Software Developer</p>
-            </div>
-          </div>
-          <div className="grid-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
-            <div className="grid-info">
-              <p className="grid-info-title">Meta Cube Drive</p>
-              <p className="grid-info-subtitle">Software Developer</p>
-            </div>
-          </div>
+          {current_events.map((event, index) => (
+            <div key={index} className="grid-item">
+              <img src={event.img} />
+              <div className="grid-info">
+                <p className="grid-info-title">{event.event_name}</p>
+                <p className="grid-info-subtitle">{event.company_name}</p>
+              </div>
+              </div>
+          ))}
         </div>
       </div>
       <div className="box-coding">
         <div className="heading-bar">
           <p className="heading">Competitive Coding</p>
           <p className="heading-view-more">
-            <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/my-events">View all {">>"}</Link>
+            <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="my-events">View all {">>"}</Link>
           </p>
         </div>
         <div className="card-content">
-          <div className="grid-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
-            <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
-          </div>
-          <div className="grid-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
-            <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
-          </div>
-          <div className="grid-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
-            <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
-          </div>
-          <div className="grid-item">
-            <img src="https://firebasestorage.googleapis.com/v0/b/mitrak-7.appspot.com/o/images%2Falwar-285x75.png?alt=media&token=4698e854-49a1-4937-907c-c0fb868d7b16" />
-            <p>Modern Institute of Technology and Reserach Centre, Alwar</p>
-          </div>
+          {competitive_events.map((event, index) => (
+            <div key={index} className="grid-item">
+              {index%3 === 0 ? <img src="https://economictimes.indiatimes.com/thumb/msid-57387551,width-1200,height-900,resizemode-4,imgsize-4974333/hackerearth-now-seeks-coders-across-seven-seas.jpg?from=mdr" />
+              : <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9rOQU0ckrbpn47PtVXV4d7E6PVgFzlFJoNQ" />}
+              <p><span style={{fontWeight: 700}}>{event['name']}</span> - {event['type_']}</p>
+            </div>
+          ))}
         </div>
       </div>
       <div className="box-upcoming-events">
         <div className="heading-bar">
-          <p className="heading">Upcoming Events</p>
+          <p className="heading">Upcoming Opportunities</p>
           <p className="heading-view-more">{">>"}</p>
         </div>
         <div className="card-content">
-          <div className="grid-item">
-            <div className="grid-info">
-              <p className="grid-info-title">How to improve coding skills</p>
-              <p className="grid-info-subtitle">By Mr. Shashi Kant Raza</p>
-              <p className="grid-info-subtitle-subtitle">
-                13:00 | Jan 25, 2023
-              </p>
+          {upcoming_events.map((event, index) => (
+            <div key={index} className="grid-item">
+              <div className="grid-info">
+                <p className="grid-info-title">{event.event_name}</p>
+                <p className="grid-info-subtitle">{event.company_name}</p>
+                <p className="grid-info-subtitle-subtitle">
+                {new Date(event.registration_last_date)
+                    .toLocaleString()
+                    .replace(", ", " | ").replaceAll("/", "-")}
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="grid-item">
-            <div className="grid-info">
-              <p className="grid-info-title">How to improve coding skills</p>
-              <p className="grid-info-subtitle">By Mr. Shashi Kant Raza</p>
-              <p className="grid-info-subtitle-subtitle">
-                13:00 | Jan 25, 2023
-              </p>
-            </div>
-          </div>
-          <div className="grid-item">
-            <div className="grid-info">
-              <p className="grid-info-title">How to improve coding skills</p>
-              <p className="grid-info-subtitle">By Mr. Shashi Kant Raza</p>
-              <p className="grid-info-subtitle-subtitle">
-                13:00 | Jan 25, 2023
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

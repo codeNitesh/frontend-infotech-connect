@@ -1,11 +1,9 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import Dashboard from './pages/dashboard/Dashboard';
-import Sidebar from './components/sidebar/Sidebar';
 
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from './components/layout/Layout';
 import Colleges from './pages/colleges/Colleges';
@@ -23,6 +21,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="login" element={<Login notify={notify} BASEURL={BASEURL}/>} />
+        <Route path="" element={<Login notify={notify} BASEURL={BASEURL}/>} />
         <Route path="register" element={<Register BASEURL={BASEURL} />} />
 
         <Route path="/app" element={<Layout />}>

@@ -97,7 +97,7 @@ function Explore({notify, BASEURL}) {
                 <p className="myevents__grid__item__events__item___subsubtitle">
                   {new Date(event.registration_last_date)
                     .toLocaleString()
-                    .replace(", ", " | ")}
+                    .replace(", ", " | ").replaceAll("/", "-")}
                 </p>
                 <p>
                   <button onClick={()=>onRegisterClick(event.id)}>Register</button>

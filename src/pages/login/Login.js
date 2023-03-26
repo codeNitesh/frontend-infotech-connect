@@ -27,12 +27,18 @@ function Login({notify, BASEURL}) {
           .then((res) => res.json())
           .then(
             (result) => {
+              if(result.token){
                 localStorage.setItem('INFOTECT_TOKEN', result.token)
                 notify('Logged in successfully.')
                 navigate("/app");
+              }else{
+                notify('Invalid credentials.')
+              }
+                
             },
             (error) => {
                 console.log("error")
+                notify('Invalid credentials.')
             }
           );
 
