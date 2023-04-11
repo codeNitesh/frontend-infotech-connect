@@ -1,13 +1,39 @@
 import React from "react";
-import "./Login.css";
+import "./AdminLogin.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function Login({ notify, BASEURL }) {
+function AdminLogin({ notify, BASEURL }) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   let navigate = useNavigate();
+
+  const checkStaffLogin = (token) => {
+    fetch(BASEURL + "/get-details/", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8", // Indicates the content
+        Authorization: "Token " + token,
+      },
+    })
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          if (result.is_staff) {
+            localStorage.setItem("INFOTECT_TOKEN", token);
+            notify("Logged in successfully.");
+            navigate("/admin/dashboard");
+          } else {
+            notify("Only admins are allowed for logging.");
+          }
+        },
+        (error) => {
+          console.log("error");
+          notify("Something went wrong. Please try later");
+        }
+      );
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,9 +53,7 @@ function Login({ notify, BASEURL }) {
       .then(
         (result) => {
           if (result.token) {
-            localStorage.setItem("INFOTECT_TOKEN", result.token);
-            notify("Logged in successfully.");
-            navigate("/app");
+            checkStaffLogin(result.token);
           } else {
             notify("Invalid credentials.");
           }
@@ -40,13 +64,14 @@ function Login({ notify, BASEURL }) {
         }
       );
   };
+
   return (
     <>
       <div className="login-page">
         <div className="form">
           <form className="login-form">
             <h2>Welcome Back!</h2>
-            <h4>Student Login</h4>
+            <h4>Admin Login</h4>
             <br></br>
             <input
               value={email}
@@ -61,9 +86,9 @@ function Login({ notify, BASEURL }) {
               placeholder="password"
             />
             <button onClick={handleSubmit}>LOGIN</button>
-            <p className="message">
+            {/* <p className="message">
               Not registered? <Link to="/register">Create an account</Link>
-            </p>
+            </p> */}
           </form>
         </div>
       </div>
@@ -71,4 +96,4 @@ function Login({ notify, BASEURL }) {
   );
 }
 
-export default Login;
+export default AdminLogin;

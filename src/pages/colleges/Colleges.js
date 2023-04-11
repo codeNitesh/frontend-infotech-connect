@@ -25,6 +25,11 @@ function Colleges({BASEURL}) {
       )
   }, [])
 
+  const email = (e, email) =>{
+    window.location.href = "mailto:"+email+"?subject = Need help regarding events";
+    e.preventDefault();
+  }
+
   return (
     <div className="colleges">
       <h1>Colleges</h1>
@@ -33,9 +38,11 @@ function Colleges({BASEURL}) {
         {colleges.map((college, i) => (
           <div key={i} className="colleges__grid__item">
             <img src={college.img} />
-            <p>{college.name}</p>
+            {/* <p>{college.name}</p> */}
             <p>
-              <span>{college.address}</span>
+              <span>{college.name}</span><br />
+              <span>{college.address}</span><br />
+              <span className="email" onClick={(e)=>email(e, college.email)}>{college.email}</span>
             </p>
           
           </div>
