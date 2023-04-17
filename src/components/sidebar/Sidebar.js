@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Sidebar.css";
 import { Outlet, Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -13,10 +13,19 @@ function Sidebar() {
   //Javascript split method to get the name of the path in array
   const splitLocation = pathname.split("/");
 
+
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const handleSignOut = () => {
     localStorage.clear();
     window.location.reload();
   };
+
+  React.useEffect(()=>{
+    if(localStorage.getItem("INFOTECT_ADMIN") === "true"){
+      setIsAdmin(true)
+    }
+  }, [])
 
   return (
     <>
@@ -24,59 +33,119 @@ function Sidebar() {
         <div className="Box-logo">INFOTECH</div>
         <div className="Box-menu">
           <ul className="ul-menu">
+
+          {!isAdmin ? (
             <Link to="">
-              <li
-                className={
-                  splitLocation[1] === "" ? "li-mneu Active-menu" : "li-mneu"
-                }
+            <li
+              className={
+                splitLocation[1] === "" ? "li-mneu Active-menu" : "li-mneu"
+              }
+            >
+              <svg
+                className="icon-menu"
+                xmlns="http://www.w3.org/2000/svg"
+                id="Outline"
+                viewBox="0 0 24 24"
+                width="512"
+                height="512"
               >
-                <svg
-                  className="icon-menu"
-                  xmlns="http://www.w3.org/2000/svg"
-                  id="Outline"
-                  viewBox="0 0 24 24"
-                  width="512"
-                  height="512"
-                >
-                  <link
-                    xmlns=""
-                    type="text/css"
-                    rel="stylesheet"
-                    id="dark-mode-custom-link"
-                  />
-                  <link
-                    xmlns=""
-                    type="text/css"
-                    rel="stylesheet"
-                    id="dark-mode-general-link"
-                  />
-                  <style
-                    xmlns=""
-                    lang="en"
-                    type="text/css"
-                    id="dark-mode-custom-style"
-                  />
-                  <style
-                    xmlns=""
-                    lang="en"
-                    type="text/css"
-                    id="dark-mode-native-style"
-                  />
-                  <style
-                    xmlns=""
-                    lang="en"
-                    type="text/css"
-                    id="dark-mode-native-sheet"
-                  />
-                  <path d="M7,0H4A4,4,0,0,0,0,4V7a4,4,0,0,0,4,4H7a4,4,0,0,0,4-4V4A4,4,0,0,0,7,0ZM9,7A2,2,0,0,1,7,9H4A2,2,0,0,1,2,7V4A2,2,0,0,1,4,2H7A2,2,0,0,1,9,4Z" />
-                  <path d="M20,0H17a4,4,0,0,0-4,4V7a4,4,0,0,0,4,4h3a4,4,0,0,0,4-4V4A4,4,0,0,0,20,0Zm2,7a2,2,0,0,1-2,2H17a2,2,0,0,1-2-2V4a2,2,0,0,1,2-2h3a2,2,0,0,1,2,2Z" />
-                  <path d="M7,13H4a4,4,0,0,0-4,4v3a4,4,0,0,0,4,4H7a4,4,0,0,0,4-4V17A4,4,0,0,0,7,13Zm2,7a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V17a2,2,0,0,1,2-2H7a2,2,0,0,1,2,2Z" />
-                  <path d="M20,13H17a4,4,0,0,0-4,4v3a4,4,0,0,0,4,4h3a4,4,0,0,0,4-4V17A4,4,0,0,0,20,13Zm2,7a2,2,0,0,1-2,2H17a2,2,0,0,1-2-2V17a2,2,0,0,1,2-2h3a2,2,0,0,1,2,2Z" />
-                </svg>
-                <div className="title-menu">Home</div>
-              </li>
-            </Link>
-            <Link to="explore">
+                <link
+                  xmlns=""
+                  type="text/css"
+                  rel="stylesheet"
+                  id="dark-mode-custom-link"
+                />
+                <link
+                  xmlns=""
+                  type="text/css"
+                  rel="stylesheet"
+                  id="dark-mode-general-link"
+                />
+                <style
+                  xmlns=""
+                  lang="en"
+                  type="text/css"
+                  id="dark-mode-custom-style"
+                />
+                <style
+                  xmlns=""
+                  lang="en"
+                  type="text/css"
+                  id="dark-mode-native-style"
+                />
+                <style
+                  xmlns=""
+                  lang="en"
+                  type="text/css"
+                  id="dark-mode-native-sheet"
+                />
+                <path d="M7,0H4A4,4,0,0,0,0,4V7a4,4,0,0,0,4,4H7a4,4,0,0,0,4-4V4A4,4,0,0,0,7,0ZM9,7A2,2,0,0,1,7,9H4A2,2,0,0,1,2,7V4A2,2,0,0,1,4,2H7A2,2,0,0,1,9,4Z" />
+                <path d="M20,0H17a4,4,0,0,0-4,4V7a4,4,0,0,0,4,4h3a4,4,0,0,0,4-4V4A4,4,0,0,0,20,0Zm2,7a2,2,0,0,1-2,2H17a2,2,0,0,1-2-2V4a2,2,0,0,1,2-2h3a2,2,0,0,1,2,2Z" />
+                <path d="M7,13H4a4,4,0,0,0-4,4v3a4,4,0,0,0,4,4H7a4,4,0,0,0,4-4V17A4,4,0,0,0,7,13Zm2,7a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V17a2,2,0,0,1,2-2H7a2,2,0,0,1,2,2Z" />
+                <path d="M20,13H17a4,4,0,0,0-4,4v3a4,4,0,0,0,4,4h3a4,4,0,0,0,4-4V17A4,4,0,0,0,20,13Zm2,7a2,2,0,0,1-2,2H17a2,2,0,0,1-2-2V17a2,2,0,0,1,2-2h3a2,2,0,0,1,2,2Z" />
+              </svg>
+              <div className="title-menu">Home</div>
+            </li>
+          </Link>
+          ): null}
+
+          {isAdmin ? (
+            <Link to="my-events">
+            <li
+              className={
+                splitLocation[1] === "" ? "li-mneu Active-menu" : "li-mneu"
+              }
+            >
+              <svg
+                className="icon-menu"
+                xmlns="http://www.w3.org/2000/svg"
+                id="Outline"
+                viewBox="0 0 24 24"
+                width="512"
+                height="512"
+              >
+                <link
+                  xmlns=""
+                  type="text/css"
+                  rel="stylesheet"
+                  id="dark-mode-custom-link"
+                />
+                <link
+                  xmlns=""
+                  type="text/css"
+                  rel="stylesheet"
+                  id="dark-mode-general-link"
+                />
+                <style
+                  xmlns=""
+                  lang="en"
+                  type="text/css"
+                  id="dark-mode-custom-style"
+                />
+                <style
+                  xmlns=""
+                  lang="en"
+                  type="text/css"
+                  id="dark-mode-native-style"
+                />
+                <style
+                  xmlns=""
+                  lang="en"
+                  type="text/css"
+                  id="dark-mode-native-sheet"
+                />
+                <path d="M7,0H4A4,4,0,0,0,0,4V7a4,4,0,0,0,4,4H7a4,4,0,0,0,4-4V4A4,4,0,0,0,7,0ZM9,7A2,2,0,0,1,7,9H4A2,2,0,0,1,2,7V4A2,2,0,0,1,4,2H7A2,2,0,0,1,9,4Z" />
+                <path d="M20,0H17a4,4,0,0,0-4,4V7a4,4,0,0,0,4,4h3a4,4,0,0,0,4-4V4A4,4,0,0,0,20,0Zm2,7a2,2,0,0,1-2,2H17a2,2,0,0,1-2-2V4a2,2,0,0,1,2-2h3a2,2,0,0,1,2,2Z" />
+                <path d="M7,13H4a4,4,0,0,0-4,4v3a4,4,0,0,0,4,4H7a4,4,0,0,0,4-4V17A4,4,0,0,0,7,13Zm2,7a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V17a2,2,0,0,1,2-2H7a2,2,0,0,1,2,2Z" />
+                <path d="M20,13H17a4,4,0,0,0-4,4v3a4,4,0,0,0,4,4h3a4,4,0,0,0,4-4V17A4,4,0,0,0,20,13Zm2,7a2,2,0,0,1-2,2H17a2,2,0,0,1-2-2V17a2,2,0,0,1,2-2h3a2,2,0,0,1,2,2Z" />
+              </svg>
+              <div className="title-menu">My Events</div>
+            </li>
+          </Link>
+          ): null}
+            
+            {!isAdmin ? (
+              <Link to="explore">
               <li
                 className={
                   splitLocation[1] === "explore"
@@ -132,6 +201,8 @@ function Sidebar() {
                 <div className="title-menu">Explore</div>
               </li>
             </Link>
+            ): null}
+            
             <Link to="colleges">
               <li
                 className={
@@ -186,7 +257,9 @@ function Sidebar() {
                 <div className="title-menu">Colleges</div>
               </li>
             </Link>
-            <Link to="my-events">
+
+            {!isAdmin ? (
+              <Link to="my-events">
               <li
                 className={
                   splitLocation[1] === "my-events"
@@ -237,7 +310,63 @@ function Sidebar() {
                 <div className="title-menu">My Events</div>
               </li>
             </Link>
-            <li
+            ): null}
+
+              {/* {isAdmin ? (
+              <Link to="add-event">
+              <li
+                className={
+                  splitLocation[1] === "my-events"
+                    ? "li-mneu Active-menu"
+                    : "li-mneu"
+                }
+              >
+                <svg
+                  className="icon-menu"
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="Outline"
+                  viewBox="0 0 24 24"
+                  width="512"
+                  height="512"
+                >
+                  <link
+                    xmlns=""
+                    type="text/css"
+                    rel="stylesheet"
+                    id="dark-mode-custom-link"
+                  />
+                  <link
+                    xmlns=""
+                    type="text/css"
+                    rel="stylesheet"
+                    id="dark-mode-general-link"
+                  />
+                  <style
+                    xmlns=""
+                    lang="en"
+                    type="text/css"
+                    id="dark-mode-custom-style"
+                  />
+                  <style
+                    xmlns=""
+                    lang="en"
+                    type="text/css"
+                    id="dark-mode-native-style"
+                  />
+                  <style
+                    xmlns=""
+                    lang="en"
+                    type="text/css"
+                    id="dark-mode-native-sheet"
+                  />
+                  <path d="M23.119.882a2.966,2.966,0,0,0-2.8-.8l-16,3.37a4.995,4.995,0,0,0-2.853,8.481L3.184,13.65a1,1,0,0,1,.293.708v3.168a2.965,2.965,0,0,0,.3,1.285l-.008.007.026.026A3,3,0,0,0,5.157,20.2l.026.026.007-.008a2.965,2.965,0,0,0,1.285.3H9.643a1,1,0,0,1,.707.292l1.717,1.717A4.963,4.963,0,0,0,15.587,24a5.049,5.049,0,0,0,1.605-.264,4.933,4.933,0,0,0,3.344-3.986L23.911,3.715A2.975,2.975,0,0,0,23.119.882ZM4.6,12.238,2.881,10.521a2.94,2.94,0,0,1-.722-3.074,2.978,2.978,0,0,1,2.5-2.026L20.5,2.086,5.475,17.113V14.358A2.978,2.978,0,0,0,4.6,12.238Zm13.971,7.17a3,3,0,0,1-5.089,1.712L11.762,19.4a2.978,2.978,0,0,0-2.119-.878H6.888L21.915,3.5Z" />
+                </svg>
+                <div className="title-menu">Add Event</div>
+              </li>
+            </Link>
+            ): null} */}
+            
+            {/* <li
               className={
                 splitLocation[1] === "login" ? "li-mneu Active-menu" : "li-mneu"
               }
@@ -284,7 +413,7 @@ function Sidebar() {
                 <path d="M21.294,13.9l-.444-.256a9.1,9.1,0,0,0,0-3.29l.444-.256a3,3,0,1,0-3-5.2l-.445.257A8.977,8.977,0,0,0,15,3.513V3A3,3,0,0,0,9,3v.513A8.977,8.977,0,0,0,6.152,5.159L5.705,4.9a3,3,0,0,0-3,5.2l.444.256a9.1,9.1,0,0,0,0,3.29l-.444.256a3,3,0,1,0,3,5.2l.445-.257A8.977,8.977,0,0,0,9,20.487V21a3,3,0,0,0,6,0v-.513a8.977,8.977,0,0,0,2.848-1.646l.447.258a3,3,0,0,0,3-5.2Zm-2.548-3.776a7.048,7.048,0,0,1,0,3.75,1,1,0,0,0,.464,1.133l1.084.626a1,1,0,0,1-1,1.733l-1.086-.628a1,1,0,0,0-1.215.165,6.984,6.984,0,0,1-3.243,1.875,1,1,0,0,0-.751.969V21a1,1,0,0,1-2,0V19.748a1,1,0,0,0-.751-.969A6.984,6.984,0,0,1,7.006,16.9a1,1,0,0,0-1.215-.165l-1.084.627a1,1,0,1,1-1-1.732l1.084-.626a1,1,0,0,0,.464-1.133,7.048,7.048,0,0,1,0-3.75A1,1,0,0,0,4.79,8.992L3.706,8.366a1,1,0,0,1,1-1.733l1.086.628A1,1,0,0,0,7.006,7.1a6.984,6.984,0,0,1,3.243-1.875A1,1,0,0,0,11,4.252V3a1,1,0,0,1,2,0V4.252a1,1,0,0,0,.751.969A6.984,6.984,0,0,1,16.994,7.1a1,1,0,0,0,1.215.165l1.084-.627a1,1,0,1,1,1,1.732l-1.084.626A1,1,0,0,0,18.746,10.125Z" />
               </svg>
               <div className="title-menu">Profile</div>
-            </li>
+            </li> */}
             <li className="li-mneu logout">
               <svg
                 className="icon-menu"

@@ -1,0 +1,23 @@
+.admin-details .chips{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.admin-details .chip{
+    background: whitesmoke;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.admin-details h1{
+    color: white;
+}
+
+.admin-details{
+    padding: 30px;
+}
+
+.white{
+    color: white;
+}

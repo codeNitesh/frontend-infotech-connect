@@ -22,7 +22,9 @@ function AdminLogin({ notify, BASEURL }) {
         (result) => {
           if (result.is_staff) {
             localStorage.setItem("INFOTECT_TOKEN", token);
+            localStorage.setItem("INFOTECT_ADMIN", "true");
             notify("Logged in successfully.");
+            
             navigate("/admin/dashboard");
           } else {
             notify("Only admins are allowed for logging.");

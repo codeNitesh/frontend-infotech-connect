@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import './AdminDashboard.css';
+import { useNavigate } from "react-router-dom";
+
+import noImage from '../../../No_Image_Available.jpg';
 
 const AdminDashboard = ({ BASEURL, notify }) => {
+
+  const navigate = useNavigate();
+
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -26,6 +32,10 @@ const AdminDashboard = ({ BASEURL, notify }) => {
       );
   }, []);
 
+  const onEventClickHandler = (id) => {
+    navigate(`${id}`);
+  }
+
   return (
     <div style={{width: '100%'}}>
       <div className="colleges">
@@ -33,8 +43,11 @@ const AdminDashboard = ({ BASEURL, notify }) => {
 
         <div className="colleges__grid">
           {events.map((college, i) => (
-            <div key={i} className="colleges__grid__item">
-              <img src={college.img} />
+            <div key={i} className="colleges__grid__item" onClick={()=>onEventClickHandler(college.id)}>
+              {college.img === null ? (
+                <img src={noImage} />
+              ) : <img src={college.img} />}
+              
               <p>{college.event_name}</p>
               <p>
                 <span>{college.company_name}</span><br/>

@@ -26,7 +26,7 @@ function Colleges({BASEURL}) {
   }, [])
 
   const email = (e, email) =>{
-    window.location.href = "mailto:"+email+"?subject = Need help regarding events";
+    window.location.href = "mailto:"+email+"?subject = Need help regarding event";
     e.preventDefault();
   }
 

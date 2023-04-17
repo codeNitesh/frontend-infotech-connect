@@ -27,6 +27,7 @@ function Login({ notify, BASEURL }) {
       .then(
         (result) => {
           if (result.token) {
+            localStorage.clear()
             localStorage.setItem("INFOTECT_TOKEN", result.token);
             notify("Logged in successfully.");
             navigate("/app");
