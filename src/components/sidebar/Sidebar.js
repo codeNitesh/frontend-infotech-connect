@@ -312,7 +312,7 @@ function Sidebar() {
             </Link>
             ): null}
 
-              {/* {isAdmin ? (
+              {isAdmin ? (
               <Link to="add-event">
               <li
                 className={
@@ -364,7 +364,7 @@ function Sidebar() {
                 <div className="title-menu">Add Event</div>
               </li>
             </Link>
-            ): null} */}
+            ): null}
             
             {/* <li
               className={

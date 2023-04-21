@@ -25,7 +25,7 @@ function AdminLogin({ notify, BASEURL }) {
             localStorage.setItem("INFOTECT_ADMIN", "true");
             notify("Logged in successfully.");
             
-            navigate("/admin/dashboard");
+            navigate("/admin/my-events");
           } else {
             notify("Only admins are allowed for logging.");
           }

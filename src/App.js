@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AdminLogin from "./pages/admin/admin-login/AdminLogin";
 import AdminDashboard from "./pages/admin/admin-dashboard/AdminDashboard";
 import AdminEventDetails from "./pages/admin/admin-dashboard/AdminEventDetails/AdminEventDetails";
+import AdminAddEvent from "./pages/admin/admin-add-event/AdminAddEvent";
 
 function App() {
   const notify = (message) => toast(message);
@@ -65,6 +66,11 @@ function App() {
           <Route
             path="my-events/:id"
             element={<AdminEventDetails notify={notify} BASEURL={BASEURL} />}
+          />
+
+          <Route
+            path="add-event"
+            element={<AdminAddEvent notify={notify} BASEURL={BASEURL} />}
           />
         </Route>
       </Routes>

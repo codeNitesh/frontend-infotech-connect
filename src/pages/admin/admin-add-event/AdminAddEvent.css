@@ -1,0 +1,224 @@
+@charset "UTF-8";
+/* Form field styling */
+
+.wrapper input {
+
+
+    border: 2px solid #eeeeee;
+    height: 46px;
+    margin: 10px 0 0 0;
+    padding: 1%;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    color: #333333;
+    letter-spacing: .01em;
+    font-style: normal;
+    font-weight: 300;
+    font-family: source-sans-pro sans-serif;
+
+    height: 30px;
+    font-size: 1.1rem;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.wrapper #fname {
+    width: 100%;
+}
+
+.wrapper #lname {
+    width: 100%;
+}
+
+.wrapper #email {
+    width: 100%;
+}
+
+.wrapper #address {
+    width: 100%;
+}
+
+.wrapper input[type=checkbox] {
+    visibility: hidden;
+}
+
+.wrapper #checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.wrapper .customCheck {
+    width: 90%;
+    float: left;
+    margin-top: 20px;
+    position: relative;
+}
+
+.wrapper .customCheck label {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 0;
+    background: #eee;
+    border: 1px solid #ddd;
+}
+
+.wrapper .customCheck label:after {
+    opacity: 0.2;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 5px;
+    left: 4px;
+    border: 3px solid #333;
+    border-top: none;
+    border-right: none;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.wrapper .customCheck label:hover::after {
+    opacity: 0.5;
+}
+
+.wrapper .customCheck input[type=checkbox]:checked+label:after {
+    opacity: 1;
+}
+
+.wrapper .robot {
+    display: inline-block;
+    position: relative;
+    width: 60%;
+    margin: 0 0 0 30px;
+    line-height: 1em;
+}
+
+.wrapper .btn {
+    text-align: center;
+    font-weight: 300;
+    font-family: source-sans-pro sans-serif;
+
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+.btn-cont {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 100px;
+}
+
+.wrapper #submit:hover {
+    background: #DADADA;
+    border: 1px #DADADA;
+    color: #C43C3E;
+}
+
+/* Top-level Styling */
+
+/* * {
+  margin: 0;
+  padding: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-padding-start: 0;
+} */
+
+/* body {
+  background-color: #e6e6e6;
+  margin: 0 auto;
+} */
+
+#wrapper {
+    max-width: 1020px;
+    height: 100%;
+    /* background: #fff; */
+    margin: 0px auto 0;
+    padding: 20px;
+}
+
+/* Div Layout Styling */
+
+.wrapper #subscribeBox {
+    position: relative;
+    margin: 0 auto;
+    padding: 10px 0;
+    height: auto;
+    width: 50%;
+    min-width: 500px;
+}
+
+*:focus {
+    outline: none;
+}
+
+.wrapper .subscribeForm {
+    display: block;
+    margin: 20px 0 0 0;
+    width: 90%;
+}
+
+/* Text Styling for h2, p, a */
+
+.wrapper h2 {
+    font-weight: 500;
+    letter-spacing: .05em;
+    color: white;
+    font-style: normal;
+    font-family: source-sans-pro, sans-serif;
+}
+
+.wrapper .thin {
+    font-weight: 200;
+}
+
+.wrapper a {
+    text-decoration: none;
+    color: #333333;
+}
+
+.wrapper a:hover {
+    text-decoration: none;
+    color: #C43C3E;
+}
+
+.wrapper p {
+    display: block;
+    width: 90%;
+    margin: 20px 0 0 0;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    color: whitesmoke;
+    letter-spacing: .01em;
+    font-style: normal;
+    font-weight: 300;
+    font-family: source-sans-pro sans-serif;
+}
+
+.label{
+    display: block;
+    font-size: 1em;
+    /* line-height: 1.5em; */
+    color: whitesmoke;
+    letter-spacing: .01em;
+    font-style: normal;
+    font-weight: 300;
+    font-family: source-sans-pro sans-serif;
+
+    margin-top: 15px;
+}
