@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 function Layout() {
 
+  const [search, setSearch] = React.useState("");
+
   React.useEffect(()=>{
     validateToken()
   }, [])
@@ -21,6 +23,13 @@ function Layout() {
     }
   }
 
+
+  const _handleKeyDown =(e)=> {
+    if (e.key === 'Enter') {
+      console.log('do validate');
+      navigate('/app/explore?search='+search);
+    }
+  }
 
   return (
     <div className="dashboard">
@@ -72,7 +81,7 @@ function Layout() {
                 />
               </g>
             </svg>
-            <input className="input-search" placeholder="Search" type="text" />
+            <input value={search} onKeyDown={_handleKeyDown} onChange={(e)=> setSearch(e.target.value)} className="input-search" placeholder="Search" type="text" />
           </div>
           <div className="box-alert-infomation">
             {/* <div className="box-alert">

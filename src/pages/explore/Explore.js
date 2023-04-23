@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useSearchParams } from "react";
 import "./Explore.css";
 import { useNavigate } from "react-router-dom";
 
@@ -11,13 +11,26 @@ function Explore({notify, BASEURL}) {
   const [isLoaded, setIsLoaded] = useState(false);
   let navigate = useNavigate(); 
 
+  const searchParams = new URLSearchParams(document.location.search)
+
+
   useEffect(() => {
-    getEventDetails();
+
+    const searchQuery = searchParams.get('search')
+    // console.log(searchQuery);
+    if(searchQuery !== null){
+      console.log(searchQuery);
+      getEventDetails("/filter-events/"+searchQuery);
+    }else{
+      getEventDetails("/all-events/");
+    }
+
+    
   }, []);
 
   
-  const getEventDetails = ()=>{
-    fetch(BASEURL+"/all-events/")
+  const getEventDetails = (str)=>{
+    fetch(BASEURL+str)
       .then((res) => res.json())
       .then(
         (result) => {
@@ -65,7 +78,7 @@ function Explore({notify, BASEURL}) {
           setPastEvents(result.pastEvents);
 
           
-          getEventDetails();
+          // getEventDetails();
         },
         (error) => {
           setIsLoaded(true);
